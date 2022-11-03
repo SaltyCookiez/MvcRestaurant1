@@ -20,9 +20,33 @@ namespace MvcRestaurant1.Controllers
         }
 
         // GET: Restaurants
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string restaurantFood, string searchString)
         {
-            return View(await _context.Restaurant.ToListAsync());
+            // Use LINQ to get list of genres.
+            IQueryable<string> foodQuery = from m in _context.Restaurant
+                                            orderby m.Food
+                                            select m.Food;
+
+            var restaurants = from m in _context.Restaurant
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                restaurants = restaurants.Where(s => s.Name.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(restaurantFood))
+            {
+                restaurants = restaurants.Where(x => x.Food == restaurantFood);
+            }
+
+            var movieGenreVM = new RestaurantFoodViewModel
+            {
+                Foods = new SelectList(await foodQuery.Distinct().ToListAsync()),
+                Restaurants = await restaurants.ToListAsync()
+            };
+
+            return View(movieGenreVM);
         }
 
         // GET: Restaurants/Details/5
