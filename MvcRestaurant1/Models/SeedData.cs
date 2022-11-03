@@ -26,6 +26,7 @@ namespace MvcRestaurant1.Models
                         Name = "Hell Kitchen",
                         OpeningDate = DateTime.Parse("2023-2-12"),
                         Food = "Scallops",
+                        Rating = "Overwhelmingly Positive",
                         Price = 30M
                     },
 
@@ -34,6 +35,7 @@ namespace MvcRestaurant1.Models
                         Name = "CHI",
                         OpeningDate = DateTime.Parse("2023-3-13"),
                         Food = "Chicken Curry",
+                        Rating = "Positive",
                         Price = 6.50M
                     },
 
@@ -42,6 +44,7 @@ namespace MvcRestaurant1.Models
                         Name = "Kaks Kokapoissi",
                         OpeningDate = DateTime.Parse("2023-2-23"),
                         Food = "Burgerrito",
+                        Rating = "Overwhelmingly Positive",
                         Price = 8.50M
                     },
 
@@ -50,7 +53,8 @@ namespace MvcRestaurant1.Models
                         Name = "Ay Caramba",
                         OpeningDate = DateTime.Parse("2023-4-15"),
                         Food = "Taco",
-                        Price = 8.50M
+                        Rating = "Mixed",
+                        Price = 7.50M
                     }
                 );
                 context.SaveChanges();
