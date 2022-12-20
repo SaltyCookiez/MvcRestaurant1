@@ -16,7 +16,9 @@ namespace MvcRestaurant1.Models
 		[Display(Name = "Opening Date")]
         [DataType(DataType.Date)]
 		public DateTime OpeningDate { get; set;	}
-		public string Food { get; set; }
+
+        [Display(Name = "Best Dish")]
+        public string BestDish { get; set; }
 
         [Range(1, 100)]
         [DataType(DataType.Currency)]
@@ -25,6 +27,7 @@ namespace MvcRestaurant1.Models
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [Required]
-        public string Rating { get; set; }
+        [Display(Name = "Dish Rating")]
+        public string DishRating { get; set; }
     }
 }

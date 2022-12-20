@@ -24,8 +24,8 @@ namespace MvcRestaurant1.Controllers
         {
             // Use LINQ to get list of genres.
             IQueryable<string> foodQuery = from m in _context.Restaurant
-                                            orderby m.Food
-                                            select m.Food;
+                                            orderby m.BestDish
+                                            select m.BestDish;
 
             var restaurants = from m in _context.Restaurant
                          select m;
@@ -37,7 +37,7 @@ namespace MvcRestaurant1.Controllers
 
             if (!string.IsNullOrEmpty(restaurantFood))
             {
-                restaurants = restaurants.Where(x => x.Food == restaurantFood);
+                restaurants = restaurants.Where(x => x.BestDish == restaurantFood);
             }
 
             var movieGenreVM = new RestaurantFoodViewModel
@@ -78,7 +78,7 @@ namespace MvcRestaurant1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,OpeningDate,Food,Price,Rating")] Restaurant restaurant)
+        public async Task<IActionResult> Create([Bind("Id,Name,OpeningDate,BestDish,Price,DishRating")] Restaurant restaurant)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace MvcRestaurant1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,OpeningDate,Food,Price,Rating")] Restaurant restaurant)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,OpeningDate,BestDish,Price,DishRating")] Restaurant restaurant)
         {
             if (id != restaurant.Id)
             {

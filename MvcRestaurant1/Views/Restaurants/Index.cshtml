@@ -12,11 +12,13 @@
 
 <form asp-controller="Restaurants" asp-action="Index" method="get">
     <p>
+        <label asp-for="RestaurantFood">Food: </label>
         <select asp-for="RestaurantFood" asp-items="Model.Foods">
             <option value="">All</option>
         </select>
 
-        Restaurant Name: <input type="text" name="SearchString" />
+        <label asp-for="SearchString">Search query: </label>
+        <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
@@ -31,13 +33,13 @@
                 @Html.DisplayNameFor(model => model.Restaurants[0].OpeningDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Food)
+                @Html.DisplayNameFor(model => model.Restaurants[0].BestDish)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Restaurants[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Restaurants[0].Rating)
+                @Html.DisplayNameFor(model => model.Restaurants[0].DishRating)
             </th>
             <th></th>
         </tr>
@@ -52,13 +54,13 @@
                 @Html.DisplayFor(modelItem => item.OpeningDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Food)
+                @Html.DisplayFor(modelItem => item.BestDish)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Rating)
+                @Html.DisplayFor(modelItem => item.DishRating)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
