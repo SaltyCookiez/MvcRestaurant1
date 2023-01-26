@@ -46,6 +46,8 @@ namespace MvcRestaurant1.Controllers
                 Restaurants = await restaurants.ToListAsync()
             };
 
+            ViewBag.SearchString = searchString;
+
             return View(movieGenreVM);
         }
 
